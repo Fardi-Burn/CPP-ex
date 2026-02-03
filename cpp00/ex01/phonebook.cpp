@@ -1,36 +1,44 @@
-#include <iostream>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/03 11:34:59 by rardila-          #+#    #+#             */
+/*   Updated: 2026/02/03 12:38:39 by rardila-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "phonebook.hpp"
 
-int	valid_name(std::string string)
+PhoneBook::PhoneBook()
 {
-	if (string == "ADD")
-		return (1);
-	if (string == "SEARCH")
-		return (2);
-	if (string == "EXIT")
-		return (3);
-	return (0);
 }
 
-int	main(void)
+void	PhoneBook::add_contact(std::string first_name, std::string last_name, std::string nickname
+				, std::string phone_number, std::string darkest_secret)
 {
-	std::string input;
+	static int	i = 0;
 
-	std::cout << "ADD, SEARCH OR EXIT\n";
-	while (1)
-	{
-		std::getline(std::cin, input);
-		std::cout << "Has escrito: " << input << std::endl;
-		if (valid_name(input) != 0)
-		{
-			if (valid_name(input) == 1)
-				add_contact();
-			if (valid_name(input) == 2)
-				search_contact();
-			if (valid_name(input) == 3)
-				return (0);
-			
-		}
-	}
-	return (0);
+	if (i == 8)
+	i = 0;
+	contacts[i].setFirstName(first_name);
+	contacts[i].setLastName(last_name);
+	contacts[i].setNickName(nickname);
+	contacts[i].setPhoneNumber(phone_number);
+	contacts[i].setDarkestSecret(darkest_secret);
+	contacts[i].setIndex(i + 1);
+	i++;
+	return ;
+}
+
+Contact	*PhoneBook::get_contacts()
+{
+	return (contacts);
+}
+
+void	PhoneBook::show_contacts(Contact *cont)
+{
+	std::cout << cont[0].getFirstName() << std::endl;
 }
