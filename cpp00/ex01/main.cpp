@@ -102,6 +102,8 @@ int			valid_name(std::string str)
 	return (0);
 }
 
+
+
 int		main(void)
 {
 	PhoneBook pb;
@@ -117,7 +119,6 @@ int		main(void)
 				add_questions(&pb);
 			if (valid_name(input) == 2)
 			{
-				pb.show_contacts(pb.get_contacts());
 				//search_contact();
 			}
 			if (valid_name(input) == 3)
