@@ -14,6 +14,7 @@
 # define PHONEBOOK_H
 # include "contact.hpp"
 # include <string>
+# include <iomanip>
 # include <iostream>
 
 class PhoneBook 
@@ -24,7 +25,7 @@ class PhoneBook
 		// Constructor
 		PhoneBook();
 		Contact	*get_contacts();
-		void	show_contacts(Contact *cont);
+		std::string	show_contacts(Contact *cont, int index, int i);
 		void	add_contact(std::string first_name, std::string last_name, std::string nickname
 							, std::string phone_number, std::string darkest_secret);
 };

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+#include <string>
 
 PhoneBook::PhoneBook()
 {
@@ -38,7 +39,19 @@ Contact	*PhoneBook::get_contacts()
 	return (contacts);
 }
 
-void	PhoneBook::show_contacts(Contact *cont)
+std::string	PhoneBook::show_contacts(Contact *cont, int index, int i)
 {
-	std::cout << cont[0].getFirstName() << std::endl;
+	if (i == 0)
+		return (std::to_string(cont[index].getIndex()));
+	if (i == 1)
+		return (cont[index].getFirstName());
+	if (i == 2)
+		return (cont[index].getLastName()); 
+	if (i == 3)
+		return (cont[index].getNickName());
+	if (i == 4)
+		return (cont[index].getPhoneNumber());
+	if (i == 5)
+		return (cont[index].getDarkestSecret());
+	return (void);
 }
