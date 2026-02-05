@@ -6,41 +6,11 @@
 /*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:35:23 by rardila-          #+#    #+#             */
-/*   Updated: 2026/02/05 12:35:50 by rardila-         ###   ########.fr       */
+/*   Updated: 2026/02/05 12:49:38 by rardila-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-
-int		only_nums(std::string str)
-{
-	for (size_t i = 0; i < str.length(); i++)
-	{
-		if (!isdigit(str[i]))
-		{
-			std::cout << "Only numbers!!!\n";
-			return (1);
-		}
-	}
-	return (0);
-}
-
-int		isascii_and_notempty(std::string str)
-{
-	if (str.empty() == 1)
-	{
-		return (1);
-	}
-	for (size_t i = 0; i < str.length(); i++)
-	{
-		if (!isalnum(str[i]))
-		{
-			std::cout << "Only numbers and alpha characteres!!!\n";
-			return (1);
-		}
-	}
-	return (0);
-}
 
 void	add_questions(PhoneBook *pb)
 {
@@ -78,18 +48,6 @@ void	add_questions(PhoneBook *pb)
 	pb->add_contact(f_name, l_name, nick_n, phone_n, darkest);
 }
 
-std::string	to_upper(std::string str)
-{
-	for (size_t i = 0; i < str.length(); i++)
-	{
-		if (str[i] >= 97 && str[i] <= 122)
-		{
-			str[i] = str[i] - 32;
-		}
-	}
-	return (str);
-}
-
 int			valid_name(std::string str)
 {
 	str = to_upper(str);
@@ -101,8 +59,6 @@ int			valid_name(std::string str)
 		return (3);
 	return (0);
 }
-
-
 
 int		main(void)
 {

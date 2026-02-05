@@ -6,7 +6,7 @@
 /*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 13:08:34 by rardila-          #+#    #+#             */
-/*   Updated: 2026/01/29 13:35:30 by rardila-         ###   ########.fr       */
+/*   Updated: 2026/02/05 12:55:51 by rardila-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ int	main(int argc, char **argv)
 	while (argv[i])
 	{
 		for(int j = 0; argv[i][j]; j++)
+		{
 			std::cout << (char)std::toupper(argv[i][j]);
+		}
 		i++;
 	}
 	std::cout << '\n';
