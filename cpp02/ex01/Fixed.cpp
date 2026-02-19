@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/19 11:02:19 by rardila-          #+#    #+#             */
+/*   Updated: 2026/02/19 13:12:03 by rardila-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
 
 Fixed::Fixed() : value(0) 
@@ -26,12 +38,18 @@ Fixed::~Fixed()
 	std::cout << "Destructor"  << std::endl;
 }
 
-Fixed&	Fixed::operator=(const Fixed &other)
+Fixed	&Fixed::operator=(const Fixed &other)
 {
 	std::cout << "Copy assignment operator" << std::endl;
 	if (this != &other)
 		this->value = other.value;
 	return (*this);
+}
+
+std::ostream	&operator<<(std::ostream &os, const Fixed &fixed)
+{
+	os << fixed.toFloat();
+	return (os);
 }
 
 int	Fixed::getRawBits(void)
