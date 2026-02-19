@@ -6,7 +6,7 @@
 /*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 11:01:57 by rardila-          #+#    #+#             */
-/*   Updated: 2026/02/19 11:05:04 by rardila-         ###   ########.fr       */
+/*   Updated: 2026/02/19 13:14:29 by rardila-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int main (void)
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	return 0;
+	return (0);
 }
