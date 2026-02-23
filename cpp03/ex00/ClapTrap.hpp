@@ -21,6 +21,7 @@ class ClapTrap
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
 		bool		alive(void);
+		// Getters
 		std::string	getName(void);
 		int			getHitpoints(void);
 		int			getEnergypoints(void);
