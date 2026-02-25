@@ -1,0 +1,84 @@
+#include "ScavTrap.hpp"
+
+////////////////////////////////////////////////////////
+
+// Constructors, Destructor and Copy/assigment
+
+ScavTrap::ScavTrap(std::string new_name) : name(new_name) ,Hit_points(100), Energy_points(50) ,Attack_damage(20), type_ct("ScavTrap"), GateKeeper(0)
+{
+	std::cout	<< "Constructor called " << type_ct << " " << new_name << " created"  << std::endl;
+}
+
+ScavTrap::ScavTrap(const ScavTrap& other)
+{
+	*this = other;
+}
+
+ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
+{
+	if (this != &other)
+	{
+		this->name = other.name;
+		this->Hit_points = other.Hit_points;
+		this->Energy_points = other.Energy_points;
+		this->Attack_damage = other.Attack_damage;
+		this->type_ct = other.type_ct;
+	}
+	return (*this);
+}
+
+ScavTrap::~ScavTrap(void)
+{
+	std::cout << "Destructor called " << this->type_ct << " " << this->name << " destroyed"  << std::endl;
+}
+
+////////////////////////////////////////////////////////
+
+// Member Functions
+
+void	ScavTrap::attack(const std::string& target)
+{
+	if (!this->alive())
+	{
+		std::cout << this->type_ct << " " << this->name << " cant attacks " << target << " because is at 0 Health Points!!!" << std::endl;
+		return ;
+	}
+	if (Energy_points > 0)
+	{
+		std::cout << type_ct << " " << this->name << " fires a nuke " << target << ", doing " << this->Attack_damage << " points of damage!" << std::endl;
+		this->Energy_points -= 1;
+		return ;
+	}
+	else
+	{
+		std::cout << type_ct << " " << this->name <<" is lacking energy!!!" << std::endl;
+		return ;
+	}
+}
+
+void	ScavTrap::guardGate(void)
+{
+	if (this->GateKeeper == 0)
+	{
+		GateKeeper = true;
+		std::cout << type_ct << " " << this->name << " has enter Gate keeper mode!!!" << std::endl;
+		return ;
+	}
+	else
+	{
+		std::cout << type_ct << " " << this->name << " has deactivated Gate keeper mode!!!" << std::endl;
+		GateKeeper = false;
+		return ;
+	}
+}
+
+////////////////////////////////////////////////////////
+
+// Getters
+
+bool	ScavTrap::getGateKeeper(void)
+{
+	return (this->GateKeeper);
+}
+
+////////////////////////////////////////////////////////
