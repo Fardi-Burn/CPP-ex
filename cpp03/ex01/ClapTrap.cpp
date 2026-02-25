@@ -11,7 +11,7 @@ ClapTrap::ClapTrap()
 	this->Energy_points = 0;
 	this->Attack_damage = 0;
 	this->type_ct = "";
-	std::cout	<< "Constructor called " << this->type_ct << " " << name << " created"  << std::endl;
+	std::cout	<< "Constructor called"  << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string new_name) : name(new_name) ,Hit_points(10), Energy_points(10) ,Attack_damage(0), type_ct("ClapTrap")

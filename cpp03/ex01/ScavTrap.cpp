@@ -4,8 +4,14 @@
 
 // Constructors, Destructor and Copy/assigment
 
-ScavTrap::ScavTrap(std::string new_name) : name(new_name) ,Hit_points(100), Energy_points(50) ,Attack_damage(20), type_ct("ScavTrap"), GateKeeper(0)
+ScavTrap::ScavTrap(std::string new_name)
 {
+	this->name = new_name;
+	this->Hit_points = 100;
+	this->Energy_points = 50;
+	this->Attack_damage = 20;
+	this->type_ct = "ScavTrap";
+	this->GateKeeper = 0;
 	std::cout	<< "Constructor called " << type_ct << " " << new_name << " created"  << std::endl;
 }
 

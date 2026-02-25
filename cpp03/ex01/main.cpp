@@ -3,7 +3,7 @@
 
 int	main(void)
 {
-	ScavTrap	a("SC4P-TP");
+	ScavTrap	a("SC4V-TP");
 	std::string	enemy = "Rust";
 
 	std::cout << std::endl;
