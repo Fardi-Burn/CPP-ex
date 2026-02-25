@@ -1,4 +1,5 @@
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
 ////////////////////////////////////////////////////////
 
@@ -15,7 +16,7 @@ ScavTrap::ScavTrap(std::string new_name)
 	std::cout	<< "Constructor called " << type_ct << " " << new_name << " created"  << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& other)
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
 {
 	*this = other;
 }

@@ -15,7 +15,7 @@ class ScavTrap : public ClapTrap
 		ScavTrap& operator=(const ScavTrap& other);
 		~ScavTrap();
 		// Member Functions
-		void		attack(const std::string& target) override;
+		void		attack(const std::string& target);
 		void		guardGate();
 		// Getters
 		bool		getGateKeeper(void);
