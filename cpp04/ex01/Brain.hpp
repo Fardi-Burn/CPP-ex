@@ -17,5 +17,4 @@ class Brain
 		std::string	getIdeas(void);
 };
 
-
 #endif
