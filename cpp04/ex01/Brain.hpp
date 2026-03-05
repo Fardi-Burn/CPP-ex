@@ -12,10 +12,9 @@ class Brain
 		~Brain();
 		Brain(const Brain& other);
 		Brain	&operator=(const Brain& other);
-		// Member functions
+		// Gettersvoid
 		void		setIdeas(int index, const std::string& idea);
 		std::string	getIdeas(void);
-		// Getters
 };
 
 
