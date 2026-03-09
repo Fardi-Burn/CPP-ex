@@ -7,7 +7,11 @@ class Cat : public Animal
 	public:
 		// Constructors and destructors
 		Cat();
+		Cat(const Cat& other);
+		Cat	&operator=(const Cat& other);
 		~Cat();
+		// Member Functions
+		void	makeSound(void);
 };
 
 #endif

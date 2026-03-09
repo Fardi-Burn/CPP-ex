@@ -12,6 +12,7 @@ Dog::Dog(void) : Animal()
 
 Dog::Dog(const Dog& other) : Animal(other)
 {
+	std::cout << "Dog copy called" << std::endl;
 	this->type = other.type;
 }
 

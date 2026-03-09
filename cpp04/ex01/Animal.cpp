@@ -7,8 +7,24 @@
 Animal::Animal()
 {
 	this->type = "";
-	this->sound = "";
 	std::cout << "Constructor Animal class" << std::endl;
+}
+
+Animal&	Animal::operator=(const Animal& other)
+{
+	this->type = other.type;
+	return (*this);
+}
+
+Animal::Animal(const Animal& other)
+{
+	std::cout << "Copy animal called" << std::endl;
+	if (&other != this)
+	{
+		this->type = other.type;
+		return ;
+	}
+	return ;
 }
 
 Animal::~Animal()
@@ -22,7 +38,7 @@ Animal::~Animal()
 
 void	Animal::makeSound(void) const
 {
-	std::cout << this->sound << std::endl;
+	std::cout << this->type << " has made a sound!" << std::endl;
 }
 
 ///////////////////////////////////////////////
@@ -32,11 +48,6 @@ void	Animal::makeSound(void) const
 std::string	Animal::getType(void) const
 {
 	return (this->type);
-}
-
-std::string	Animal::getSound(void) const
-{
-	return (this->sound);
 }
 
 ///////////////////////////////////////////////

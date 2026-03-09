@@ -12,13 +12,13 @@ Animal::Animal()
 
 Animal&	Animal::operator=(const Animal& other)
 {
-	std::cout << "Copy animal called" << std::endl;
 	this->type = other.type;
 	return (*this);
 }
 
 Animal::Animal(const Animal& other)
 {
+	std::cout << "Copy animal called" << std::endl;
 	if (&other != this)
 	{
 		this->type = other.type;

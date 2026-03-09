@@ -4,12 +4,25 @@
 
 // Constructors and destructors
 
-Cat::Cat(void)
+Cat::Cat(void) : Animal()
 {
 	this->type = "Cat";
-	this->sound = "Meow";
 	std::cout << "Cat constructor called" << std::endl;
 }
+
+Cat::Cat(const Cat& other) : Animal(other)
+{
+	std::cout << "Cat copy called" << std::endl;
+	this->type = other.type;
+}
+
+Cat	&Cat::operator=(const Cat& other)
+{
+	if (&other != this)
+		this->type = other.type;
+	return (*this);
+}
+
 
 Cat::~Cat(void)
 {
@@ -17,3 +30,12 @@ Cat::~Cat(void)
 }
 
 ///////////////////////////////////////////////
+
+// Member Functions
+
+void	Cat::makeSound(void)
+{
+	std::cout << this->type << " meow!!!" << std::endl;
+}
+
+//////////////////////////////////////////////

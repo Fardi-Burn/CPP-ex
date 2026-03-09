@@ -12,6 +12,7 @@ Cat::Cat(void) : Animal()
 
 Cat::Cat(const Cat& other) : Animal(other)
 {
+	std::cout << "Cat copy called" << std::endl;
 	this->type = other.type;
 }
 
