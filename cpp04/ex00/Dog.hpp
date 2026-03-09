@@ -7,7 +7,11 @@ class Dog : public Animal
 	public:
 		// Constructors and destructors
 		Dog();
+		Dog(const Dog& other);
+		Dog	&operator=(const Dog& other);
 		~Dog();
+		// member function
+		void	makeSound(void);
 };
 
 #endif
