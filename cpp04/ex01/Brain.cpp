@@ -20,7 +20,7 @@ Brain::Brain(const Brain& other)
 	*this = other;
 }
 
-Brain::&operator=(const Brain& other)
+Brain &Brain::operator=(const Brain& other)
 {
 	std::cout << "Copy assigment brain called" << std::endl;
 	std::copy(other.ideas, other.ideas + 100, this->ideas);
@@ -37,16 +37,12 @@ void	Brain::setIdeas(int index, const std::string& ideas)
 		this->ideas[index] = ideas;
 }
 
-std::string	&Brain::getIdeas(int &index)
+std::string	Brain::getIdeas(int index)
 {
-	if (index >= 0 && index < 100)
-	{
-		return (this->ideas[index]);
-	}
-	else
-	{
-		return (void);
-	}
+	if (ideas[index].length() > 0)
+		return (ideas[index]);
+	else 
+		return ("");
 }
 
 /////////////////////////////////////////////////////

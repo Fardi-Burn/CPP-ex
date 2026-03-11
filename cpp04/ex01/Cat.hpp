@@ -14,7 +14,11 @@ class Cat : public Animal
 		Cat	&operator=(const Cat& other);
 		~Cat();
 		// Member Functions
-		void	makeSound(void);
+		void		makeSound(void);
+		// Setters
+		void		setIdeas(int index, const std::string& idea);
+		// Gettersvoid
+		void	printIdeas(void);
 };
 
 #endif

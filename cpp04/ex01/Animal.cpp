@@ -51,3 +51,13 @@ std::string	Animal::getType(void) const
 }
 
 ///////////////////////////////////////////////
+
+void		Animal::setIdeas(int index, const std::string& idea)
+{
+	(void)index;
+	(void)idea;
+}
+void	Animal::printIdeas(void)
+{
+
+}
