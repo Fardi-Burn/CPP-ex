@@ -14,13 +14,13 @@ class Animal
 		Animal& operator=(const Animal& other);
 		virtual ~Animal();
 		// Members functions
-		virtual void		makeSound() const;
+		virtual void		makeSound() const = 0;
 		// Getters
 		virtual std::string	getType() const;
 		// Setters
 		virtual void		setIdeas(int index, const std::string& idea);
 		// Gettersvoid
-		virtual void		printIdeas(void);
+		virtual void	printIdeas(void);
 };
 
 #endif
