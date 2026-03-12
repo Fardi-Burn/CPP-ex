@@ -6,7 +6,7 @@
 /*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:35:02 by rardila-          #+#    #+#             */
-/*   Updated: 2026/02/05 12:46:15 by rardila-         ###   ########.fr       */
+/*   Updated: 2026/03/12 12:39:17 by rardila-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <string>
 # include <iomanip>
 # include <iostream>
+# include <cstdlib> 
 
 class PhoneBook 
 {

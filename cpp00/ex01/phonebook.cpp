@@ -6,7 +6,7 @@
 /*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 11:34:59 by rardila-          #+#    #+#             */
-/*   Updated: 2026/02/05 12:40:38 by rardila-         ###   ########.fr       */
+/*   Updated: 2026/03/12 12:38:09 by rardila-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	PhoneBook::printContact(std::string index, Contact *c, int cont)
 		std::cout << "Out of range" << std::endl;
 		return ;
 	}
-	i = std::stoi(index);
+	i = std::atoi(index.c_str());
 	if (i < 1 || i > cont)
 	{
 		std::cout << "Out of range" << std::endl;
