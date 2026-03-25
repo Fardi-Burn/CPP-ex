@@ -6,7 +6,7 @@
 /*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 11:58:08 by rardila-          #+#    #+#             */
-/*   Updated: 2026/02/10 12:39:09 by rardila-         ###   ########.fr       */
+/*   Updated: 2026/03/25 11:41:10 by rardila-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Weapon
 		Weapon(std::string name);
 		~Weapon();
 		void		setType(std::string t);
-		std::string	getType(void);
+		const std::string	getType(void);
 };
 
 #endif
