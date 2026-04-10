@@ -6,7 +6,7 @@
 /*   By: rardila- <rardila-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 11:01:57 by rardila-          #+#    #+#             */
-/*   Updated: 2026/02/19 13:14:29 by rardila-         ###   ########.fr       */
+/*   Updated: 2026/04/10 12:10:37 by rardila-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int main (void)
 
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
+	std::cout << "b is " << b.toFloat() << std::endl;
 	std::cout << "c is " << c << std::endl;
 	std::cout << "d is " << d << std::endl;
 
