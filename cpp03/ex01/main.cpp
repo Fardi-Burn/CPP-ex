@@ -43,6 +43,8 @@ int	main(void)
 	a.attack(enemy);
 	
 	std::cout << std::endl;
+	a.guardGate();
+	a.guardGate();
 	std::cout << "The battle ended!!!" << std::endl;
 	std::cout << std::endl;
 	

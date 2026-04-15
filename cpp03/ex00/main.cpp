@@ -44,7 +44,6 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << "The battle ended!!!" << std::endl;
 	std::cout << std::endl;
-	
 
 	return (0);
 }

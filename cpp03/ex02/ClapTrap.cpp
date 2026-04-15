@@ -39,7 +39,7 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
 
 ClapTrap::~ClapTrap(void)
 {
-	std::cout << "Destructor called " << this->type_ct << " " << this->name << " destroyed"  << std::endl;
+	std::cout << "(ClapTrap)Destructor called " << this->type_ct << " " << this->name << " destroyed"  << std::endl;
 }
 
 ////////////////////////////////////////////////////////

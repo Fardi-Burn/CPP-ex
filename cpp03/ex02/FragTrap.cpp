@@ -36,32 +36,12 @@ FragTrap	&FragTrap::operator=(const FragTrap &other)
 
 FragTrap::~FragTrap(void)
 {
-	std::cout << "Destructor exploted " << this->type_ct << " " << this->name << " into pieces!!!"  << std::endl;
+	std::cout << "(FragTrap)Destructor exploted " << this->type_ct << " " << this->name << " into pieces!!!"  << std::endl;
 }
 
 ////////////////////////////////////////////////////////
 
 // Member Functions
-
-void	FragTrap::attack(const std::string& target)
-{
-	if (!this->alive())
-	{
-		std::cout << this->type_ct << " " << this->name << " cant attacks " << target << " because is at 0 Health Points!!!" << std::endl;
-		return ;
-	}
-	if (Energy_points > 0)
-	{
-		std::cout << type_ct << " " << this->name << " is attacking " << target << ", doing " << this->Attack_damage << " points of damage!" << std::endl;
-		this->Energy_points -= 1;
-		return ;
-	}
-	else
-	{
-		std::cout << type_ct << " " << this->name <<" is lacking energy!!!" << std::endl;
-		return ;
-	}
-}
 
 void	FragTrap::highFiveGuys(void)
 {

@@ -36,7 +36,7 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << "Destructor for ScavTrap called " << this->type_ct << " " << this->name << " destroyed"  << std::endl;
+	std::cout << "(ScavaTrap)Destructor for " << this->type_ct << " called " << this->name << " destroyed"  << std::endl;
 }
 
 ////////////////////////////////////////////////////////
