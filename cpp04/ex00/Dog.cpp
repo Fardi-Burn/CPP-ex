@@ -32,7 +32,7 @@ Dog::~Dog(void)
 
 /// Member Functions
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
 	std::cout << this->type << " woof!!!" << std::endl;
 }

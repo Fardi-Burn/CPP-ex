@@ -33,7 +33,7 @@ Cat::~Cat(void)
 
 // Member Functions
 
-void	Cat::makeSound(void)
+void	Cat::makeSound(void) const
 {
 	std::cout << this->type << " meow!!!" << std::endl;
 }

@@ -15,14 +15,17 @@ Dog::Dog(const Dog& other) : Animal(other)
 {
 	std::cout << "Dog copy called" << std::endl;
 	this->type = other.type;
-	this->brain = other.brain;
+	this->brain = new Brain(*other.brain);
 }
 
 Dog& Dog::operator=(const Dog& other)
 {
 	if (&other != this)
+	{
 		this->type = other.type;
-	return (*this);
+		this->brain = new Brain(*(other.brain));
+	}
+		return (*this);
 }
 
 Dog::~Dog(void)
@@ -35,7 +38,7 @@ Dog::~Dog(void)
 
 /// Member Functions
 
-void	Dog::makeSound(void)
+void	Dog::makeSound(void) const
 {
 	std::cout << this->type << " woof!!!" << std::endl;
 }

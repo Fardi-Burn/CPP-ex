@@ -1,19 +1,19 @@
 # Makefile to compile the Animal/Dog/Cat project
 
 # Compiler
-CXX = g++
+CXX = c++
 
 # Compilation flags
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Source files
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp WrongAnimal.cpp WrongCat.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name
-NAME = brain
+NAME = abstract
 
 # Default rule
 all: $(NAME)

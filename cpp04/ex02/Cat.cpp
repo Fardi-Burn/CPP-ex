@@ -15,14 +15,17 @@ Cat::Cat(const Cat& other) : Animal(other)
 {
 	std::cout << "Cat copy called" << std::endl;
 	this->type = other.type;
-	this->brain = other.brain;
+	this->brain = new Brain(*other.brain);
 }
 
 Cat	&Cat::operator=(const Cat& other)
 {
 	if (&other != this)
+	{
 		this->type = other.type;
-	return (*this);
+		this->brain = new Brain(*(other.brain));
+	}
+		return (*this);
 }
 
 
@@ -36,7 +39,7 @@ Cat::~Cat(void)
 
 // Member Functions
 
-void	Cat::makeSound(void)
+void	Cat::makeSound(void) const
 {
 	std::cout << this->type << " meow!!!" << std::endl;
 }

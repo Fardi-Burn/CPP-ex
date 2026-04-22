@@ -16,7 +16,7 @@ class Brain
 		// Setters
 		void		setIdeas(int index, const std::string& idea);
 		// Gettersvoid
-		std::string	getIdeas(int index);
+		std::string	getIdeas(int index) const;
 };
 
 #endif

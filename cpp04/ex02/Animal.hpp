@@ -20,7 +20,7 @@ class Animal
 		// Setters
 		virtual void		setIdeas(int index, const std::string& idea);
 		// Gettersvoid
-		virtual void	printIdeas(void);
+		virtual void		printIdeas(void);
 };
 
 #endif

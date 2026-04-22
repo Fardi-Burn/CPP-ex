@@ -37,7 +37,7 @@ void	Brain::setIdeas(int index, const std::string& ideas)
 		this->ideas[index] = ideas;
 }
 
-std::string	Brain::getIdeas(int index)
+std::string	Brain::getIdeas(int index) const
 {
 	if (ideas[index].length() > 0)
 		return (ideas[index]);

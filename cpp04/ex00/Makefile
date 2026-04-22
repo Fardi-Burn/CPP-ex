@@ -1,7 +1,7 @@
 # Makefile to compile the Animal/Dog/Cat project
 
 # Compiler
-CXX = g++
+CXX = c++
 
 # Compilation flags
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
