@@ -6,35 +6,23 @@ int	main(void)
 	std::cout << "----- Constructor with grades too high and low ----" << std::endl;
 	try
 	{
-		Bureaucrat b("Bob", 160);
-		std::cout << "----- It shouldnt reach here -----" << std::endl;
-	}
-	catch(std::exception &ex)
-	{
-		std::cout << ex.what() << std::endl;
-	}
+		Bureaucrat	b("Bob", 150);
+		Bureaucrat	c("Frederick", 100);
+		std::cout << b << '\n';
+		std::cout << c << '\n';
 
-	try
-	{
-		Bureaucrat c("Jhon", 0);
-		std::cout << "----- It shouldnt reach here -----" << std::endl;
-	}
-	catch(std::exception &ex)
-	{
-		std::cout << ex.what() << std::endl;
-	}
+		std::cout << "----- Create form ----" << std::endl;
+		Form		f("House plan", 140, 100);
+		std::cout << f << '\n';
+		std::cout << '\n';
 
-	std::cout << "----- Increment and decrement grade func and << operand ----" << std::endl;
-
-	try
-	{
-		Bureaucrat d("Doe", 1);
-		std::cout << d << std::endl;
-		d.decrementGrade();
-		std::cout << d << std::endl;
-		std::cout << "----- Increment grade by 2 to trigger throw -----" << std::endl;
-		d.incrementGrade();
-		d.incrementGrade();
+		std::cout << "----- Bob and Frederick try to sign the form ----" << std::endl;
+		b.signForm(f);
+		c.signForm(f);
+	
+		std::cout << "----- State of form (sign) ----" << std::endl;
+		std::cout << f.getSigned() << "\n";
+		c.signForm(f);
 	}
 	catch(std::exception &ex)
 	{

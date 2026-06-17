@@ -3,13 +3,15 @@
 # include <string>
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	private:
 		const	std::string _name;
 		bool				_signed;
-		const	int 		_req_sign;
-		const	int			_req_execute;
+		int 			_req_sign;
+		int				_req_execute;
 	public:
 		// Constructors and destructors
 		Form();
@@ -18,12 +20,12 @@ class Form
 		~Form();
 		Form(std::string name, int req_sign, int req_execute);
 		// Getters
-		const std::string	getName();
-		const bool			getSigned();
-		const int			getReq_sign();
-		const int			getReq_execute();
-		void				beSigned(Bureaucrat bureau);
-		
+		std::string			getName() const;
+		bool				getSigned() const;
+		int					getReq_sign() const;
+		int					getReq_execute() const;
+		void				beSigned(Bureaucrat &bureau);
+
 		// exceptions
 		class GradeTooHighException : public std::exception
 		{
@@ -36,6 +38,14 @@ class Form
 			public:
 				virtual const char *what() const throw();
 		};
+
+		class AlreadySignedException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
 };
+
+std::ostream& operator<<(std::ostream &os, const Form &orm);
 
 #endif
