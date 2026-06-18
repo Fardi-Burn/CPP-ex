@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 AForm::AForm() : _name("default"), _signed(0), _req_sign(150), _req_execute(150)
 {
@@ -67,6 +68,15 @@ void	AForm::beSigned(Bureaucrat &bureau)
 		_signed = 1;
 }
 
+
+void	AForm::checkExecution(Bureaucrat const &executor) const
+{
+	if (this->getSigned() == 0)
+		throw (NotSignedException());
+	if (executor.getGrade() > this->getReq_execute())
+		throw (GradeTooLowException());
+}
+
 // Exceptions
 
 const char	*AForm::GradeTooHighException::what() const throw()
@@ -83,6 +93,12 @@ const char	*AForm::AlreadySignedException::what() const throw()
 {
 	return ("Form is already sign");
 }
+
+const char	*AForm::NotSignedException::what() const throw()
+{
+	return ("Form is not sign");
+}
+
 
 std::ostream& operator<<(std::ostream &os, const AForm &form)
 {

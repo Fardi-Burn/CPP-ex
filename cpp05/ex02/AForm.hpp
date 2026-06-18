@@ -1,7 +1,6 @@
 #ifndef AFORM_HPP
 # define AFORM_HPP
 # include <string>
-# include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
@@ -17,14 +16,16 @@ class AForm
 		AForm();
 		AForm(const AForm &other);
 		AForm	&operator=(const AForm &other);
-		~AForm();
+		virtual	~AForm();
 		AForm(std::string name, int req_sign, int req_execute);
 		// Getters
-		std::string			getName() const;
-		bool				getSigned() const;
-		int					getReq_sign() const;
-		int					getReq_execute() const;
-		void				beSigned(Bureaucrat &bureau);
+		std::string				getName() const;
+		bool					getSigned() const;
+		int						getReq_sign() const;
+		int						getReq_execute() const;
+		void					beSigned(Bureaucrat &bureau);
+		virtual void			execute(Bureaucrat const &executor) const = 0;
+		void					checkExecution(Bureaucrat const &executor) const;
 
 		// exceptions
 		class GradeTooHighException : public std::exception
@@ -40,6 +41,12 @@ class AForm
 		};
 
 		class AlreadySignedException : public std::exception
+		{
+			public:
+				virtual const char *what() const throw();
+		};
+
+		class NotSignedException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();

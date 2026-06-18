@@ -1,4 +1,6 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
+#include <exception>
 
 // Constructors and destructors
 
@@ -61,7 +63,7 @@ void	Bureaucrat::decrementGrade()
 	_grade++;
 }
 
-void	Bureaucrat::signForm(Form &f)
+void	Bureaucrat::signForm(AForm &f)
 {
 	try
 	{
@@ -73,6 +75,20 @@ void	Bureaucrat::signForm(Form &f)
 		std::cout << this->getName() << " couldn't sign " << f.getName() << " because " << e.what() << '\n';
 	}
 }
+
+void		Bureaucrat::executeForm(AForm &f)
+{
+	try
+	{
+		f.execute(*this);
+		std::cout << _name << " executed " << f.getName() << std::endl;
+	}
+	catch (std::exception const &e)
+	{
+		std::cout << _name << " couldn't execute " << f.getName() << " because " << e.what() << std::endl;
+	}
+}
+
 
 // Execptions
 

@@ -5,13 +5,13 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Source files
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp forms/ShrubberyCreationForm.cpp forms/RobotomyRequestForm.cpp forms/PresidentialPardonForm.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
 
 # Executable name
-NAME = ex01
+NAME = ex02
 
 # Default rule
 all: $(NAME)
