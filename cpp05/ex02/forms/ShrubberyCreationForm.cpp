@@ -3,6 +3,11 @@
 
 // Constructor
 
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("default")
+{
+
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
 
@@ -11,6 +16,17 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("Shrubb
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other)
+{
+	*this = other;
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
+{
+	_target = other._target;
+	return (*this);
 }
 
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
