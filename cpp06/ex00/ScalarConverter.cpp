@@ -11,7 +11,7 @@ static void	printChar(double value)
 	if (std::isnan(value) || value < 0 || value > 127)
 		std::cout << "char: impossible" << std::endl;
 	else if (!std::isprint(static_cast<char>(value)))
-		std::cout << "char; Non displayable" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	else
 	{
 		std::cout << "char: " << static_cast<char>(value) << std::endl;
@@ -30,13 +30,14 @@ static void	printInt(double value)
 
 static void	printFloat(double value)
 {
-	std::cout << "float: " << std::fixed << std::setprecision(value == static_cast<int>(value) ? 1 : 6) << static_cast<float>(value) << "f" << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(value == static_cast<int>(value) ? 1 : 7) << static_cast<float>(value) << "f" << std::endl;
 }
 
 static void	printDouble(double value)
 {
-	std::cout << "double: " << std::fixed << std::setprecision(value == static_cast<int>(value) ? 1 : 6) << value << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(value == static_cast<int>(value) ? 1 : 15) << value << std::endl;
 }
+
 
 void	ScalarConverter::convert(const std::string &str)
 {
@@ -62,6 +63,11 @@ void	ScalarConverter::convert(const std::string &str)
 	{
 		value = std::strtod(str.c_str(), NULL);
 		 converted = 1;
+	}
+	if (converted == 0)
+	{
+		std::cout << "Incorrect input" << std::endl;
+		return ;
 	}
 	printChar(value);
 	printInt(value);
