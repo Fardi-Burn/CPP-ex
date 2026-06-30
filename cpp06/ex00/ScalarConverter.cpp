@@ -28,14 +28,38 @@ static void	printInt(double value)
 	}
 }
 
-static void	printFloat(double value)
+static void	printFloat(double value, std::string str)
 {
-	std::cout << "float: " << std::fixed << std::setprecision(value == static_cast<int>(value) ? 1 : 7) << static_cast<float>(value) << "f" << std::endl;
+	size_t	dot = str.find('.');
+	int		decimals = 1;
+
+	if (dot != std::string::npos)
+	{
+		size_t	i = dot + 1;
+		while (i < str.length() && std::isdigit(str[i]))
+			i++;
+		decimals = i - dot - 1;
+	}
+	if (decimals > 7)
+		decimals = 7;
+	std::cout << "float: " << std::fixed << std::setprecision(value == static_cast<int>(value) ? 1 : decimals) << static_cast<float>(value) << "f" << std::endl;
 }
 
-static void	printDouble(double value)
+static void	printDouble(double value, std::string str)
 {
-	std::cout << "double: " << std::fixed << std::setprecision(value == static_cast<int>(value) ? 1 : 15) << value << std::endl;
+	size_t	dot = str.find('.');
+	int		decimals = 1;
+
+	if (dot != std::string::npos)
+	{
+		size_t	i = dot + 1;
+		while (i < str.length() && std::isdigit(str[i]))
+			i++;
+		decimals = i - dot - 1;
+	}
+	if (decimals > 17)
+		decimals = 17;
+	std::cout << "double: " << std::fixed << std::setprecision(value == static_cast<int>(value) ? 1 : decimals) << value << std::endl;
 }
 
 
@@ -71,8 +95,8 @@ void	ScalarConverter::convert(const std::string &str)
 	}
 	printChar(value);
 	printInt(value);
-	printFloat(value);
-	printDouble(value);
-	std::cout << "DEBUG value = " << value << std::endl;
+	printFloat(value, str);
+	printDouble(value, str);
+	// std::cout << "DEBUG value = " << value << std::endl;
 	return ;
 }
