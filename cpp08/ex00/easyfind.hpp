@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 # include <exception>
 
 class NoCoincidenceException : public std::exception
@@ -15,10 +16,8 @@ typename T::iterator	easyfind(T &array, int number)
 {
 	typename T::iterator it;
 
-	for (it = array.begin(); it != array.end(); ++it)
-	{
-		if (*it == number)
-			return (it);
-	}
-	throw (NoCoincidenceException());
+	it = std::find(array.begin(), array.end(), number);
+	if (it == array.end())	
+		throw (NoCoincidenceException());
+	return (it);
 }
