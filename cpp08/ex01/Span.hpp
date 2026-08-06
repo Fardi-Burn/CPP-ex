@@ -15,12 +15,31 @@ class Span
 		void	addNumber(int number);
 		int		shortestSpan();
 		int		longestSpan();
+		void	addRange(int begin, int end);
+
+		class	UintMaxExeption : public std::exception
+		{
+			public:
+				const char *what() const throw()
+				{
+					return ("UintMax reached");
+				}
+		};
+
 		class	VectorFullException : public std::exception
 		{
 			public:
 				const char *what() const throw()
 				{
 					return ("Max size reached");
+				}
+		};
+		class	NotEnoughNumbersExeption : public std::exception
+		{
+			public:
+				const char *what() const throw()
+				{
+					return ("Not enough numbers");
 				}
 		};
 };

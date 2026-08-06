@@ -1,10 +1,13 @@
 #include "Span.hpp"
 #include <algorithm>
+#include <climits>
 #include <iostream>
 
-Span::Span(unsigned int number) : N(number)
+Span::Span(unsigned int number)
 {
-
+	if (N >= UINT_MAX)
+		throw (UintMaxExeption());
+	N = number;
 }
 
 Span::~Span()
@@ -41,12 +44,19 @@ int	Span::shortestSpan()
 	int					smallest;
 
 	if (_Nums.size() < 2)
-		return (0);
-	copy = _Nums;
-	for (std::vector<int>::iterator it = copy.begin(); it < copy.end(); ++it)
 	{
-		if (copy[it - 1] - copy[it])
+		throw (NotEnoughNumbersExeption());
 	}
+	copy = _Nums;
+	std::sort(copy.begin(), copy.end());
+	smallest = copy[1] - copy[0];
+	for (size_t i = 1; i < copy.size() - 1; i++)
+	{
+		int	diff = copy[i + 1] - copy[i];
+		if (diff < smallest)
+			smallest = diff;
+	}
+	return (smallest);
 }
 
 int	Span::longestSpan()
@@ -58,5 +68,19 @@ int	Span::longestSpan()
 	if (_Nums.size() < 2)
 		return (0);
 	copy = _Nums;
-	return (0);
+	std::sort(copy.begin(), copy.end());
+	biggest = copy[copy.size() - 1];
+	smallest = copy[0];
+	int	diff = biggest - smallest;
+	return (diff);
+}
+
+void	Span::addRange(int begin, int end)
+{
+	while (begin <= end)
+	{
+		addNumber(begin);
+		begin++;
+	}
+	return ;
 }
