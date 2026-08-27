@@ -5,7 +5,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Source files
-SRCS = main.cpp
+SRCS = main.cpp BitcoinExchange.cpp
 # Object files
 OBJS = $(SRCS:.cpp=.o)
 

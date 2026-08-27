@@ -1,9 +1,14 @@
 #pragma once
-#include <map>
-#include <string>
-#include <fstream>
-#include <iostream>
-#include <sstream>
+# include <map>
+# include <string>
+# include <fstream>
+# include <iostream>
+# include <sstream>
+# include <cstdlib>
+# include <cctype>
+# include <cstddef>
+# include <stdexcept>
+
 
 class btc
 {
@@ -18,9 +23,9 @@ class btc
 
 		void	execute(char *name_file);
 		void	table_parser(std::string name_file);
-		int		map_maker(std::string data_base);
-		int		correct_format(std::string line);
-
+		int		map_maker(std::ifstream &data_base);
+		int		correct_format_table(std::string line);
+		int		isValidDate(int year, int month, int day);
 
 
 
