@@ -58,6 +58,7 @@ int btc::isValidDate(int year, int month, int day)
     return (1);
 }
 
+// Database parsing
 
 int	btc::correct_format_table(std::string line)
 {
@@ -129,6 +130,7 @@ int	btc::map_maker(std::ifstream &data_base)
 
 	return (1);
 }
+// Main function
 
 void btc::execute(char *name_file)
 {
@@ -140,7 +142,7 @@ void btc::execute(char *name_file)
 	{
  	   std::cout << it->first << " => " << it->second << std::endl;
 	}
-
+	std::cout << _Data_Base["2022-01-12"];
 	return ;
 }
 
