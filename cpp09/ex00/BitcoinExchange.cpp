@@ -1,6 +1,4 @@
 #include "BitcoinExchange.hpp"
-#include <fstream>
-#include <sstream>
 
 btc::btc()
 {
@@ -181,15 +179,34 @@ void	btc::correct_format_input(std::string line)
 
 void	btc::bitcoin_exchange(std::string line, std::string date)
 {
+	std::map<std::string, float>::iterator	it;
 	float	value;
 	line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
 	std::istringstream iss(line);
+
+	if (!(iss >> value) || !iss.eof())
+    	throw std::string("bad input");
+
 	iss >> value;
+
 	if (value > 1000)
 		throw std::string("number too big");
 	if (value < 0)
 		throw std::string("number too small");
-	std::cout << date << " " << value << std::endl;
+
+	it = _Data_Base.lower_bound(date);
+	if (it == _Data_Base.end())
+		--it;
+	else if (it->first != date)
+	{
+		if (it == _Data_Base.begin())
+			throw std::string("date too early");
+		--it;
+	}
+	std::cout << date << " => "
+              << value << " = "
+              << value * it->second
+              << std::endl;
 }
 
 void	btc::input_parser(std::string name_file)
