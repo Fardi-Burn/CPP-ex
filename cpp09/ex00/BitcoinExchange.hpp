@@ -8,12 +8,13 @@
 # include <cctype>
 # include <cstddef>
 # include <stdexcept>
+# include <algorithm>
 
 
 class btc
 {
 	private:
-		std::map<std::string, double> _Data_Base;
+		std::map<std::string, float> _Data_Base;
 		std::map<std::string, double> _Date_Prices;
 	public:
 		btc();
@@ -26,7 +27,9 @@ class btc
 		int		map_maker(std::ifstream &data_base);
 		int		correct_format_table(std::string line);
 		int		isValidDate(int year, int month, int day);
-
+		void	input_parser(std::string name_file);
+		void	correct_format_input(std::string line);
+		void	bitcoin_exchange(std::string line, std::string date);
 
 
 
