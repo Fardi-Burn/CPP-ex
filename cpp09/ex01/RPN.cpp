@@ -19,13 +19,18 @@ RPN::RPN(RPN const &other)
 RPN	RPN::operator=(RPN const &other)
 {
 	if (this != &other)
-		_stack = other._stack;
+		_num_stack= other._num_stack;
 	return (*this);
 }
 
 // Member functions
 
-void	RPN::stack_maker(std::string str)
+void	RPN::string_parser(std::string str)
+{
+	
+}
+
+void	RPN::calculate()
 {
 
 }

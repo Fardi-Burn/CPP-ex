@@ -11,5 +11,11 @@ int	main(int argc, char **argv)
 	}
 	std::string str(argv[1]);
 	RPN	rpn;
-	rpn.stack_maker(str);
+	try
+	{
+		rpn.string_parser(str);
+		
+	}
+	catch (const std::exception&) {
+	}
 }

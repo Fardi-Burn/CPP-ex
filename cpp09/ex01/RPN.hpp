@@ -5,13 +5,13 @@
 class RPN
 {
 	private:
-		std::stack<char>	_stack;
+		std::stack<int>	_num_stack;
 	public:
 		RPN();
 		~RPN();
 		RPN(RPN const &other);
 		RPN	operator=(RPN const &other);
 
-		void	stack_maker(std::string str);
+		void	string_parser(std::string str);
 		void	calculate();
 };
