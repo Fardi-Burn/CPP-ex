@@ -1,6 +1,7 @@
 #pragma once
 # include <stack>
 # include <string>
+# include <iostream>
 
 class RPN
 {
@@ -12,6 +13,5 @@ class RPN
 		RPN(RPN const &other);
 		RPN	operator=(RPN const &other);
 
-		void	string_parser(std::string str);
-		void	calculate();
+		void	calculate(std::string str);
 };

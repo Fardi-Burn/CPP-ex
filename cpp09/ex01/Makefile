@@ -2,7 +2,7 @@
 CXX = c++
 
 # Compilation flags
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 # Source files
 SRCS = main.cpp RPN.cpp

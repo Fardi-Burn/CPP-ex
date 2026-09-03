@@ -1,5 +1,6 @@
 #include "RPN.hpp"
 #include <iostream>
+#include <algorithm>
 
 int	main(int argc, char **argv)
 {
@@ -10,12 +11,15 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	std::string str(argv[1]);
-	RPN	rpn;
+	RPN rpn;
 	try
 	{
-		rpn.string_parser(str);
-		
+		str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
+		rpn.calculate(str);
 	}
-	catch (const std::exception&) {
+	catch (std::string error) 
+	{
+		std::cout << error << std::endl;
 	}
+	return (0);
 }
