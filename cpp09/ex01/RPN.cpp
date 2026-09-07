@@ -32,7 +32,7 @@ void	RPN::calculate(std::string str)
 
 	if (str.size() < 2)
 	{
-		throw (std::string("Error"));
+		throw (std::string("Errora"));
 	}
 	for (size_t i = 0; i < str.size(); i++)
 	{
@@ -41,7 +41,7 @@ void	RPN::calculate(std::string str)
 		else
 		{
 			if (_num_stack.size() < 2) 
-				throw (std::string("Error"));
+				throw (std::string("Errorb"));
 			int b = _num_stack.top();
 			_num_stack.pop();
 			int a = _num_stack.top();
@@ -49,19 +49,21 @@ void	RPN::calculate(std::string str)
 
 			switch (str[i])
 			{
-			        case '+': result = a + b; break;
-        			case '-': result = a - b; break;
-        			case '*': result = a * b; break;
-        			case '/':
-            if (b == 0)
-                throw (std::string("Error"));
-            result = a / b;
-            break;
+					case '+': result = a + b; break;
+					case '-': result = a - b; break;
+					case '*': result = a * b; break;
+					case '/':
+			if (b == 0)
+				throw (std::string("Errorc"));
+			result = a / b;
+			break;
+			default:
+				throw (std::string("Errord"));
 			}
 			_num_stack.push(result);
 		}
 	}
 	if (_num_stack.size() > 1)
-                throw (std::string("Error"));
+				throw (std::string("Errore"));
 	std::cout << result << std::endl;
 }
