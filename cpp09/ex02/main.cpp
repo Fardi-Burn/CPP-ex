@@ -12,6 +12,8 @@ int	main(int argc, char **argv)
 	{
 		PmergeMe pmm(argv);
 		pmm.correct_argv();
+		pmm.special_cases();
+		pmm.before_after_print();
 	}
 	catch(std::exception &ex)
 	{
