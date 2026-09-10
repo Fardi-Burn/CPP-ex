@@ -5,6 +5,7 @@
 # include <cctype>
 # include <climits>
 # include <cstdlib>
+# include <utility>
 # include <vector>
 # include <iostream>
 # include <algorithm>
@@ -14,9 +15,9 @@ class PmergeMe {
 	private:
 		char				**_raw_argv;
 		std::vector<int>	_numbers;
+	public:
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
-	public:
 
 		// Constructors
 		PmergeMe();
@@ -31,7 +32,8 @@ class PmergeMe {
 		void	before_after_print();
 		void	special_cases();
 		bool	is_sorted(std::vector<int> v) const;
-		
+		void	sortVector(std::vector<int> &nums);
+		void	sortDeque();
 
 
 

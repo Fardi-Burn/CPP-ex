@@ -97,6 +97,56 @@ bool PmergeMe::is_sorted(std::vector<int> v) const
     return (true);
 }
 
+// Sort functions
+
+void	PmergeMe::sortVector(std::vector<int> &nums)
+{
+	if (nums.size() <= 1)
+		return ;
+	std::vector<std::pair<int, int> >	vectorpairs;
+	std::pair<int, int>					p;
+	int									straggler = -1;
+
+	// Convertimos el vector nums en parejas con el big y small, si son impares no los guardamos en straggler
+	for (size_t i = 1; i < nums.size(); i+= 2)
+	{
+		int first = nums[i - 1];
+		int second = nums[i];
+		if (first < second)
+			p = std::make_pair(first, second);
+		else
+		 	p= std::make_pair(second, first);
+		vectorpairs.push_back(p);
+		// test borrar
+		std::cout << "First: " << first << std::endl;
+		std::cout << "Second: " << second << std::endl;
+	}
+	// Por si numero impar
+	if (nums.size() % 2 != 0)
+	{
+		straggler = nums.back();
+		// test borrar
+		std::cout << "straggler: " << straggler << std::endl;
+	}
+	// Los separamos ahora en propios vectores para ordenar big
+	std::vector<int>	small;
+	std::vector<int>	big;
+	for (std::vector<std::pair<int, int> >::iterator it = vectorpairs.begin();
+			it != vectorpairs.end(); ++it)
+	{
+		small.push_back(it->first);
+		big.push_back(it->second);
+	}
+	// test borrar
+	std::cout << "Loop sortVector" << std::endl;
+	sortVector(big);
+}
+
+void	PmergeMe::sortDeque()
+{
+
+}
+
 
 // ArgumentsErrorException
 

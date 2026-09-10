@@ -14,6 +14,7 @@ int	main(int argc, char **argv)
 		pmm.correct_argv();
 		pmm.special_cases();
 		pmm.before_after_print();
+		pmm.sortVector(pmm._vec);
 	}
 	catch(std::exception &ex)
 	{
