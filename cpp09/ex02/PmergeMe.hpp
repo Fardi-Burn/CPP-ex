@@ -31,9 +31,13 @@ class PmergeMe {
 		void	printVector(const std::vector<int>& numbers);
 		void	before_after_print();
 		void	special_cases();
+		bool	comparePairs(const std::pair<int, int> &a, const std::pair<int, int> &b);
 		bool	is_sorted(std::vector<int> v) const;
 		void	sortVector(std::vector<int> &nums);
 		void	sortDeque();
+		void	insertPending(std::vector<int>& mainChain, const std::vector<std::pair<int, int> >& pair);
+		std::vector<size_t>	jacobsthalOrder(size_t size);
+		bool	is_duplicated(std::vector<int> v) const;
 
 
 

@@ -85,19 +85,107 @@ void	PmergeMe::special_cases()
 	{
 		throw (GeneralErrorException("already sorted"));
 	}
+	if (is_duplicated(_numbers))
+	{
+		throw (GeneralErrorException("duplicate number"));
+	}
+}
+
+bool PmergeMe::is_duplicated(std::vector<int> v) const
+{
+	size_t i = 0;
+	size_t j = 0;
+	while (i < v.size())
+	{
+		j = 0;
+		while (j < v.size())
+		{
+			if (i != j)
+			{
+				if (v[i] == v[j])
+					return (true);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (false);
 }
 
 bool PmergeMe::is_sorted(std::vector<int> v) const
 {
-    for (size_t i = 1; i < _numbers.size(); ++i)
-    {
-        if (v[i] < v[i - 1])
-            return (false);
-    }
-    return (true);
+	for (size_t i = 1; i < _numbers.size(); ++i)
+	{
+		if (v[i] < v[i - 1])
+			return (false);
+	}
+	return (true);
 }
 
 // Sort functions
+
+bool	PmergeMe::comparePairs(const std::pair<int, int> &a, const std::pair<int, int> &b)
+{
+	return (a.second < b.second);
+}
+
+
+std::vector<size_t> PmergeMe::jacobsthalOrder(size_t size)
+{
+	std::vector<size_t> order;
+
+	if (size == 0)
+		return order;
+
+	// b1
+	order.push_back(0);
+
+	size_t previous = 1;
+	size_t current = 3;
+
+	while (previous < size)
+	{
+		size_t end = current;
+
+		if (end > size)
+			end = size;
+
+		size_t i = end;
+
+		while (i > previous)
+		{
+			--i;
+			order.push_back(i);
+		}
+
+		previous = current;
+		current = current * 2 + 1;
+	}
+
+	return order;
+}
+
+void PmergeMe::insertPending(std::vector<int>& mainChain, const std::vector<std::pair<int, int> >& pairs)
+{
+	if (pairs.empty())
+		return;
+
+	std::vector<size_t> order = jacobsthalOrder(pairs.size());
+	for (std::vector<size_t>::iterator it = order.begin(); it != order.end(); ++it)
+	{
+		size_t index = *it;
+		if (index >= pairs.size())
+			continue;
+		int small = pairs[index].first;
+		int big = pairs[index].second;
+		// Buscamos el big asociado
+		std::vector<int>::iterator bigPos = std::lower_bound(mainChain.begin(),mainChain.end(), big);
+		// El small solamente se busca hasta su big
+		std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), bigPos, small);
+		mainChain.insert(pos, small);
+	}
+}
+
 
 void	PmergeMe::sortVector(std::vector<int> &nums)
 {
@@ -117,29 +205,46 @@ void	PmergeMe::sortVector(std::vector<int> &nums)
 		else
 		 	p= std::make_pair(second, first);
 		vectorpairs.push_back(p);
-		// test borrar
-		std::cout << "First: " << first << std::endl;
-		std::cout << "Second: " << second << std::endl;
 	}
 	// Por si numero impar
 	if (nums.size() % 2 != 0)
 	{
 		straggler = nums.back();
-		// test borrar
-		std::cout << "straggler: " << straggler << std::endl;
 	}
-	// Los separamos ahora en propios vectores para ordenar big
-	std::vector<int>	small;
 	std::vector<int>	big;
-	for (std::vector<std::pair<int, int> >::iterator it = vectorpairs.begin();
-			it != vectorpairs.end(); ++it)
+	for (std::vector<std::pair<int, int> >::iterator it = vectorpairs.begin(); it != vectorpairs.end(); ++it)
 	{
-		small.push_back(it->first);
 		big.push_back(it->second);
 	}
-	// test borrar
-	std::cout << "Loop sortVector" << std::endl;
 	sortVector(big);
+
+	std::vector<std::pair<int, int> > sortedPairs;
+	std::vector<bool> used(vectorpairs.size(), false);
+
+	for (std::vector<int>::iterator bit = big.begin(); bit != big.end(); ++bit)
+	{
+		for (size_t i = 0; i < vectorpairs.size(); ++i)
+		{
+			if (!used[i] && vectorpairs[i].second == *bit)
+			{
+			sortedPairs.push_back(vectorpairs[i]);
+			used[i] = true;
+			break ;
+			}
+		}
+	}
+	vectorpairs = sortedPairs;
+
+	std::vector<int> mainChain = big;
+
+	insertPending(mainChain, vectorpairs);
+
+	if (straggler != -1)
+	{
+		std::vector<int>::iterator pos = std::lower_bound(mainChain.begin(), mainChain.end(), straggler);
+		mainChain.insert(pos, straggler);
+	}
+	nums = mainChain;
 }
 
 void	PmergeMe::sortDeque()
