@@ -213,18 +213,23 @@ void	PmergeMe::sortVector(std::vector<int> &nums)
 	}
 	sortVector(big);
 
-	std::map<int, std::pair<int, int> > lookup;
-
-	for (size_t i = 0; i < vectorpairs.size(); ++i)
-		lookup[vectorpairs[i].second] = vectorpairs[i];
-
 	std::vector<std::pair<int, int> > sortedPairs;
 	sortedPairs.reserve(big.size());
 
 	for (size_t i = 0; i < big.size(); ++i)
-		sortedPairs.push_back(lookup[big[i]]);
+	{
+		for (size_t j = 0; j < vectorpairs.size(); ++j)
+		{
+			if (vectorpairs[j].second == big[i])
+			{
+				sortedPairs.push_back(vectorpairs[j]);
+				break;
+			}
+		}
+	}
 
-vectorpairs = sortedPairs;
+	vectorpairs = sortedPairs;
+
 
 	std::vector<int> mainChain = big;
 
@@ -336,18 +341,22 @@ void PmergeMe::sortDeque(std::deque<int>& nums)
 
 	sortDeque(big);
 
-	std::map<int, std::pair<int, int> > lookup;
-
-	for (size_t i = 0; i < dequepairs.size(); ++i)
-		lookup[dequepairs[i].second] = dequepairs[i];
-
 	std::deque<std::pair<int, int> > sortedPairs;
-	sortedPairs.resize(big.size());
 
 	for (size_t i = 0; i < big.size(); ++i)
-		sortedPairs[i] = lookup[big[i]];
+	{
+		for (size_t j = 0; j < dequepairs.size(); ++j)
+		{
+			if (dequepairs[j].second == big[i])
+			{
+				sortedPairs.push_back(dequepairs[j]);
+				break;
+			}
+		}
+	}
 
 	dequepairs = sortedPairs;
+
 
 	std::deque<int> mainChain = big;
 
