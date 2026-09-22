@@ -14,8 +14,8 @@
 class PmergeMe {
 	private:
 		char				**_raw_argv;
-		std::vector<int>	_numbers;
 	public:
+		std::vector<int>	_numbers;
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
 
@@ -34,11 +34,12 @@ class PmergeMe {
 		bool	comparePairs(const std::pair<int, int> &a, const std::pair<int, int> &b);
 		bool	is_sorted(std::vector<int> v) const;
 		void	sortVector(std::vector<int> &nums);
-		void	sortDeque();
+		void	sortDeque(std::deque<int>& nums);
 		void	insertPending(std::vector<int>& mainChain, const std::vector<std::pair<int, int> >& pair);
 		std::vector<size_t>	jacobsthalOrder(size_t size);
 		bool	is_duplicated(std::vector<int> v) const;
-
+		void	insertPending_d(std::deque<int>& mainChain, const std::deque<std::pair<int, int> >& pairs);
+		std::deque<size_t>	jacobsthalOrder_d(size_t size);
 
 
 

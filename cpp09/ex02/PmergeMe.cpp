@@ -242,10 +242,138 @@ void	PmergeMe::sortVector(std::vector<int> &nums)
 	nums = mainChain;
 }
 
-void	PmergeMe::sortDeque()
+std::deque<size_t> PmergeMe::jacobsthalOrder_d(size_t size)
 {
+	std::deque<size_t> order;
 
+	if (size == 0)
+		return order;
+
+	// b1
+	order.push_back(0);
+
+	size_t previous = 1;
+	size_t current = 3;
+
+	while (previous < size)
+	{
+		size_t end = current;
+		if (end > size)
+			end = size;
+
+		for (size_t i = end; i > previous; --i)
+			order.push_back(i - 1);
+
+		size_t next = current + 2 * previous;
+		previous = current;
+		current = next;
+	}
+
+	return order;
 }
+
+void PmergeMe::insertPending_d(std::deque<int>& mainChain,
+	const std::deque<std::pair<int, int> >& pairs)
+{
+	if (pairs.empty())
+		return;
+
+	std::deque<size_t> order = jacobsthalOrder_d(pairs.size());
+
+	for (std::deque<size_t>::iterator it = order.begin();
+		it != order.end(); ++it)
+	{
+		size_t index = *it;
+
+		if (index >= pairs.size())
+			continue;
+
+		int small = pairs[index].first;
+		int big = pairs[index].second;
+
+		// Buscamos el big asociado
+		std::deque<int>::iterator bigPos =
+			std::lower_bound(mainChain.begin(), mainChain.end(), big);
+
+		// El small solamente se busca hasta su big
+		std::deque<int>::iterator pos =
+			std::lower_bound(mainChain.begin(), bigPos, small);
+
+		mainChain.insert(pos, small);
+	}
+}
+
+void PmergeMe::sortDeque(std::deque<int>& nums)
+{
+	if (nums.size() <= 1)
+		return;
+
+	std::deque<std::pair<int, int> > dequepairs;
+	std::pair<int, int> p;
+	int straggler = -1;
+
+	// Convertimos el deque en parejas con big y small
+	for (size_t i = 1; i < nums.size(); i += 2)
+	{
+		int first = nums[i - 1];
+		int second = nums[i];
+
+		if (first < second)
+			p = std::make_pair(first, second);
+		else
+			p = std::make_pair(second, first);
+
+		dequepairs.push_back(p);
+	}
+
+	// Por si el numero es impar
+	if (nums.size() % 2 != 0)
+		straggler = nums.back();
+
+	std::deque<int> big;
+
+	for (std::deque<std::pair<int, int> >::iterator it = dequepairs.begin();
+		it != dequepairs.end(); ++it)
+	{
+		big.push_back(it->second);
+	}
+
+	sortDeque(big);
+
+	std::deque<std::pair<int, int> > sortedPairs;
+	std::deque<bool> used(dequepairs.size(), false);
+
+	for (std::deque<int>::iterator bit = big.begin();
+		bit != big.end(); ++bit)
+	{
+		for (size_t i = 0; i < dequepairs.size(); ++i)
+		{
+			if (!used[i] && dequepairs[i].second == *bit)
+			{
+				sortedPairs.push_back(dequepairs[i]);
+				used[i] = true;
+				break;
+			}
+		}
+	}
+
+	dequepairs = sortedPairs;
+
+	std::deque<int> mainChain = big;
+
+	insertPending_d(mainChain, dequepairs);
+
+	if (straggler != -1)
+	{
+		std::deque<int>::iterator pos =
+			std::lower_bound(mainChain.begin(), mainChain.end(), straggler);
+
+		mainChain.insert(pos, straggler);
+	}
+
+	nums = mainChain;
+}
+
 
 
 // ArgumentsErrorException
