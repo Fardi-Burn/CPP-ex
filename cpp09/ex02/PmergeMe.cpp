@@ -69,11 +69,11 @@ void PmergeMe::printVector(const std::vector<int>& numbers)
 }
 void PmergeMe::before_after_print()
 {
-	std::cout << "Before: ";
+	std::cout << "\033[33mBefore: \033[0m";
 	printVector(_numbers);
 	std::vector<int> sorted = _numbers;
 	std::sort(sorted.begin(), sorted.end());
-	std::cout << "After: ";
+	std::cout << "\033[32mAfter: \033[0m";
 	printVector(sorted);
 }
 
@@ -146,20 +146,15 @@ std::vector<size_t> PmergeMe::jacobsthalOrder(size_t size)
 	while (previous < size)
 	{
 		size_t end = current;
-
 		if (end > size)
 			end = size;
 
-		size_t i = end;
+		for (size_t i = end; i > previous; --i)
+			order.push_back(i - 1);
 
-		while (i > previous)
-		{
-			--i;
-			order.push_back(i);
-		}
-
+		size_t next = current + 2 * previous;
 		previous = current;
-		current = current * 2 + 1;
+		current = next;
 	}
 
 	return order;

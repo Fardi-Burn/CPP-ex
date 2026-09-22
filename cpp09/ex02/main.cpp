@@ -1,5 +1,6 @@
 #include "PmergeMe.hpp"
 #include <iostream>
+#include <ctime>
 
 int	main(int argc, char **argv)
 {
@@ -14,8 +15,18 @@ int	main(int argc, char **argv)
 		pmm.correct_argv();
 		pmm.special_cases();
 		pmm.before_after_print();
+
+		clock_t start = std::clock();
 		pmm.sortVector(pmm._vec);
-		pmm.printVector(pmm._vec);
+		clock_t end = std::clock();
+		double duration_ms = static_cast<double>(end - start) * 1000.0 / CLOCKS_PER_SEC;
+
+		std::cout << "Time to process a range of "
+				<< pmm._vec.size()
+				<< " elements with std::vector : "
+				<< duration_ms << " ms" << std::endl;
+		//pmm.printVector(pmm._vec);
+
 	}
 	catch(std::exception &ex)
 	{
