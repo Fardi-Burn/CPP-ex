@@ -10,6 +10,7 @@
 # include <iostream>
 # include <algorithm>
 # include <deque>
+# include <map>
 
 class PmergeMe {
 	private:
